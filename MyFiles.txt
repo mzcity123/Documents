@@ -1,1 +1,2 @@
 比较好用的文本编辑软件：Sublime Text
+Jenkins插件开发：http://my.oschina.net/songcser/blog/159170
