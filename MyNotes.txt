@@ -1,3 +1,4 @@
 比较好用的文本编辑软件：Sublime Text
 Jenkins插件开发：http://my.oschina.net/songcser/blog/159170
 mvn跳过test的方法：mvn clean install -Dmaven.test.skip=true 
+WAS服务器案例：http://blog.csdn.net/tomatozq/article/details/7304225
