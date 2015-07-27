@@ -3,3 +3,4 @@ Jenkins插件开发：http://my.oschina.net/songcser/blog/159170
 mvn跳过test的方法：mvn clean install -Dmaven.test.skip=true 
 WAS服务器案例：http://blog.csdn.net/tomatozq/article/details/7304225
 python插件下载：SendKeys-0.3_py27
+比较好的博客：https://github.com/phodal
