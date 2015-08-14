@@ -4,3 +4,8 @@ mvn跳过test的方法：mvn clean install -Dmaven.test.skip=true
 WAS服务器案例：http://blog.csdn.net/tomatozq/article/details/7304225
 python插件下载：SendKeys-0.3_py27
 比较好的博客：https://github.com/phodal
+sprintf函数常用来代替itoa，将整数格式化为字符串形式。如下：
+int number=0;
+char str[60];
+number=number + 10;
+sprintf(str,"%d",number);
