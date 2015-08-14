@@ -1,0 +1,16 @@
+	char *str = "easdfkj,asddfa,sdfazdf,\"status\":8";
+
+	if ( strstr(str,"\"status\":0")) {
+		lr_log_message(str);
+
+	}
+	else if(strstr(str,"\"status\":1"))
+	{
+		lr_log_message("第二个");
+
+	}
+	else
+	{
+		lr_log_message("没有了");
+
+	}
