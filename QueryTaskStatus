@@ -1,0 +1,73 @@
+Action()
+{
+
+  int Tag[9]={0,0,0,0,0,0,0,0,0};
+	int i;
+	char *str = "easdfkj,asddfa,sdfazdf,\"status\":8";
+	char Trn_Status[1024] = "Trn_";
+	char StatusCode[1024];
+
+
+	//单次循环（存在TaskID的情况下，就一定存在Status字段，总会有一个判断条件生效）
+	if ( strstr(str,"\"status\":0")) {
+		lr_log_message("***************匹配第一个***************");
+		if (Tag[0]==0) 
+		{
+			lr_start_transaction("Trn_0");
+			Tag[0] = 1;
+		}
+	}
+	else if(strstr(str,"\"status\":1"))
+	{
+		lr_log_message("***************匹配第二个***************");
+		if (Tag[1]==0) 
+		{
+			lr_start_transaction("Trn_1");
+			Tag[1] = 1;
+		}
+		if (Tag[0]==1) 
+		{
+			lr_end_transaction("Trn_0", LR_AUTO);
+		}
+	}
+	else if(strstr(str,"\"status\":8"))
+	{
+		lr_log_message("***************匹配第三个***************");
+		if (Tag[8]==0) 
+		{
+			lr_start_transaction("Trn_8");
+			Tag[8] = 1;
+		}
+		if (Tag[7]==1) 
+		{
+			lr_end_transaction("Trn_7", LR_AUTO);
+		}
+	}
+	else//无法判断8状态的结束，只能在
+	{
+		lr_error_message("***************没有匹配到0-8的状态*****************");
+	}
+
+	//匹配不到TaskID之后，跳出循环检查，再用FOR循环结束前面7个事务。
+	lr_log_message("\n");
+	for (i=0;i<=7;i++) 
+	{
+		lr_log_message("***************第%d次循环*****************",i+1);
+		lr_log_message("Tag[%d]:%d",i,Tag[i]);	
+		if (Tag[i]==1) 
+		{
+			itoa(i,StatusCode,10);
+			strcat(Trn_Status,StatusCode);
+			lr_end_transaction(Trn_Status, LR_AUTO);
+		}
+	}
+
+	//前面7个事务结束之后，跳到result页面结束第8个事务。（用if语句）
+
+	if (Tag[8]==1) 
+	{
+		lr_end_transaction("Trn_8", LR_AUTO);
+	}
+
+	return 0;
+}
