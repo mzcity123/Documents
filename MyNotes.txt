@@ -11,3 +11,18 @@ number=number + 10;
 sprintf(str,"%d",number);
 
 http://ipsapro.isoftstone.com/iSurvey/survey.aspx/绩效管理效果问卷调查
+
+loadrunner脚本上传文件时，可以把文件放在脚本文件夹根目录下面，用相对路径的方式上传这个文件。如：
+	web_submit_data("CompilerProxy", 
+	    "Action=http://{Server}:80/mcloud/compiler/rest/compileTask/task{ID}{RandomNO}", 
+		"Method=POST", 
+		"EncType=multipart/form-data", 
+		"Referer=", 
+		"RecContentType=text/html",
+		"Mode=HTTP",
+		ITEMDATA, 
+		"Name=platforms", "Value=android", ENDITEM, 
+		"Name=compileMode", "Value=RELEASE", ENDITEM, 
+		"Name=packageType", "Value=SHARED_RUNTIME", ENDITEM,
+		"Name=projectFile", "Value=project02.zip", "File=Yes", ENDITEM, 
+		LAST);
