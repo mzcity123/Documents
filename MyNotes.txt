@@ -26,3 +26,15 @@ loadrunner脚本上传文件时，可以把文件放在脚本文件夹根目录�
 		"Name=packageType", "Value=SHARED_RUNTIME", ENDITEM,
 		"Name=projectFile", "Value=project02.zip", "File=Yes", ENDITEM, 
 		LAST);
+
+Linux curl上传文件：
+declare -i major
+major=${BUILD_NUMBER}/10000+1
+declare -i main
+main=(${BUILD_NUMBER}%10000)/100
+declare -i minor
+minor=(${BUILD_NUMBER}%10000)%100
+version=$major.$main.$minor
+echo $version
+
+curl -F 'PUB_BUNDLE_INFO={"bundle":{"bundleName":"WorkingWorld.apk","bundleNameZh":"BundleNameZh","bundleNameEn":"BundleNameEn","appId":2,"bundleType":1,"bundleOwner":"test1","keywords":"test","descriptionZh":"中文描述","descriptionEn":"英文描述","signAppId":"signAppId123"},"bundleVersion":{"osTarget":0,"version":"'"$version"'","iosLocalurl":"http://www.huawei.com"},"attachment":{"fileName":"WorkingWorld.apk","attachType":4}}' -F "FILE_PATH=@android/runtime/build/output/apk/WorkingWorld.apk" http://mcloud-alpha.huawei.com/mcloud/mpm/services/pubBundleInfo/autoPubBundleInfo
