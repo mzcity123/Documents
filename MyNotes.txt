@@ -49,3 +49,6 @@ curl -F 'PUB_BUNDLE_INFO={"bundle":{"bundleName":"WorkingWorld.apk","bundleNameZ
      lr_output_message("We can see the last occurrence of e: %s", last_e);
 
 loadrunner 参数化中的数据包含逗号时，需要用双引号括起来。
+
+https://github.com/jenkinsci/maven-plugin
+
