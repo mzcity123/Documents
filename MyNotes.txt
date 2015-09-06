@@ -52,3 +52,4 @@ loadrunner 参数化中的数据包含逗号时，需要用双引号括起来。
 
 https://github.com/jenkinsci/maven-plugin
 
+https://github.com/jenkinsci/maven-hpi-plugin
