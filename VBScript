@@ -1,0 +1,17 @@
+FileName = "C:\users.csv"
+j = 1
+
+Set fso = CreateObject("scripting.FileSystemObject").CreateTextFile(FileName)
+
+for roomNo = 1 to 300
+	for i = 1 to 198
+		fso.WriteLine("IM_test" & j & "," & "IM_test" & j & "," & "room" & roomNo & "," )
+		j = j + 1
+	next
+next
+
+fso.Close
+
+if CreateObject("Scripting.FileSystemObject").FileExists(FileName) Then 
+	CreateObject("WScript.Shell").Run FileName
+end if
